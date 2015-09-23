@@ -54,6 +54,9 @@ class Cron
 
       r.name = s.name
       r.score = s.score
+      r.first_picture = s.first_picture
+      r.second_picture = s.second_picture
+      r.third_picture = s.third_picture
       r.save
     end
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923091618) do
+ActiveRecord::Schema.define(version: 20150923122948) do
 
   create_table "ranking_pages", force: :cascade do |t|
     t.string   "prefecture"
@@ -24,11 +24,14 @@ ActiveRecord::Schema.define(version: 20150923091618) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.text     "html"
     t.string   "name"
     t.string   "score"
+    t.string   "first_picture"
+    t.string   "second_picture"
+    t.string   "third_picture"
   end
 
 end

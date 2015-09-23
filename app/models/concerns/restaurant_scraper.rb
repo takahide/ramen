@@ -20,6 +20,27 @@ class RestaurantScraper < Scraper
     Nokogiri::HTML(@html, nil, 'utf-8').css("#rdhead-info-box .score span").text
   end
 
+  def first_picture
+    imgs = Nokogiri::HTML(@html, nil, 'utf-8').css("ul.rstdtl-top-photo__list .rstdtl-top-photo__photo img")
+    if imgs.present?
+      imgs[0].attr("src")
+    end
+  end
+
+  def second_picture
+    imgs = Nokogiri::HTML(@html, nil, 'utf-8').css("ul.rstdtl-top-photo__list .rstdtl-top-photo__photo img")
+    if imgs.present? and imgs.size > 1
+      imgs[1].attr("src")
+    end
+  end
+
+  def third_picture
+    imgs = Nokogiri::HTML(@html, nil, 'utf-8').css("ul.rstdtl-top-photo__list .rstdtl-top-photo__photo img")
+    if imgs.present? and imgs.size > 2
+      imgs[2].attr("src")
+    end
+  end
+
   def html
     @html
   end
