@@ -10,7 +10,7 @@ class Scraper
   end
 
   def access url
-    sleep(rand(3) + 1)
+    sleep(rand(10) + 1)
     method_name = caller[0][/`([^']*)'/, 1]
     logger = Logger.new "log/runner/#{method_name.split(" ").last}.log"
     logger.debug "Accessing #{url}"
