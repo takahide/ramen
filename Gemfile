@@ -13,6 +13,7 @@ group :development, :test do
 end
 
 group :production do
+  gem 'rb-readline'
   gem 'therubyracer'
   gem 'pg'
 end
