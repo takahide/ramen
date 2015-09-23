@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  prefecture: MyString
+  page: 1
+  html: MyText
+
+two:
+  prefecture: MyString
+  page: 1
+  html: MyText
