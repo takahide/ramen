@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923122948) do
+ActiveRecord::Schema.define(version: 20150925153804) do
 
   create_table "ranking_pages", force: :cascade do |t|
     t.string   "prefecture"
@@ -32,6 +32,21 @@ ActiveRecord::Schema.define(version: 20150923122948) do
     t.string   "first_picture"
     t.string   "second_picture"
     t.string   "third_picture"
+  end
+
+  create_table "tsukemen_pages", force: :cascade do |t|
+    t.integer  "page"
+    t.text     "html"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tsukemen_restaurants", force: :cascade do |t|
+    t.string   "url"
+    t.integer  "rank"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "html"
   end
 
 end

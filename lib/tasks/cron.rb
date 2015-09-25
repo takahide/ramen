@@ -5,6 +5,45 @@ require 'kconv'
 
 class Cron
 
+  def self.get_tsukemen_pages
+    style = "1-2"
+    page_max = 121
+    ls = RamendbListScraper.new style, page_max
+    while (1)
+      if ls.get_next_page
+        TsukemenPage.create(
+          page: ls.page,
+          html: ls.html
+        )
+      else
+        break
+      end
+    end
+  end
+
+  def self.tsukemen_pages_to_restaurants
+    TsukemenPage.find_each do |p|
+      next if p.html.nil?
+      ls = RamendbListScraper.new "1-2", 121
+      ls.html = p.html
+      ls.restaurants.each do |r|
+        TsukemenRestaurant.create(
+          rank: r.rank,
+          url: r.url
+        )
+      end
+    end
+  end
+
+  def self.get_tsukemen_restaurant_pages
+    TsukemenRestaurant.find_each do |r|
+      s = RamendbRestaurantScraper.new r.url
+      s.get_page
+      r.html = s.html
+      r.save
+    end
+  end
+
   def self.get_tokyo_pages
     prefecture = "tokyo"
     code = "A"
