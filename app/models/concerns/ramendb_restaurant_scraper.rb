@@ -53,7 +53,7 @@ class RamendbRestaurantScraper < Scraper
     return nil
   end
 
-  def open
+  def opening_hours
     Nokogiri::HTML(@html, nil, 'utf-8').css("#data-table tr").each do |tr|
       return tr.css("td").text if tr.css("th").text == "営業時間"
     end

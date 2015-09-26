@@ -68,7 +68,7 @@ class Cron
       r.prefecture = s.prefecture
       r.city = s.city
       r.tel = s.tel
-      r.open = s.open
+      r.opening_hours = s.opening_hours
       r.closed = s.closed
       r.seats = s.seats
       r.smoke = s.smoke

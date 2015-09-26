@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150926103429) do
+ActiveRecord::Schema.define(version: 20150926110838) do
 
   create_table "ranking_pages", force: :cascade do |t|
     t.string   "prefecture"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20150926103429) do
     t.string   "prefecture"
     t.string   "city"
     t.string   "tel"
-    t.string   "open"
+    t.string   "opening_hours"
     t.string   "closed"
     t.string   "seats"
     t.string   "smoke"
