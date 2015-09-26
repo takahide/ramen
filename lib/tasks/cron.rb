@@ -5,6 +5,19 @@ require 'kconv'
 
 class Cron
 
+  def self.get_same_in_tabelog
+    TsukemenRestaurant.find_each do |r|
+      next if r.tabelog_url.present?
+      next if r.tel.nil? || r.tel.match(/[\d-]*/)[0] == ""
+      ls = TabelogSearchScraper.new r.tel
+      ls.get_page
+
+      r.tabelog_url = ls.restaurant_url
+      r.tabelog_name = ls.restaurant_name
+      r.save
+    end
+  end
+
   def self.get_tsukemen_pages
     style = "1-2"
     page_max = 121
@@ -37,9 +50,36 @@ class Cron
 
   def self.get_tsukemen_restaurant_pages
     TsukemenRestaurant.find_each do |r|
+      next if r.html.present?
       s = RamendbRestaurantScraper.new r.url
       s.get_page
       r.html = s.html
+      r.save
+    end
+  end
+
+  def self.get_tsukemen_restaurant_info
+    TsukemenRestaurant.find_each do |r|
+      s = RamendbRestaurantScraper.new r.url
+      s.html = r.html
+
+      r.name = s.name
+      r.address = s.address
+      r.prefecture = s.prefecture
+      r.city = s.city
+      r.tel = s.tel
+      r.open = s.open
+      r.closed = s.closed
+      r.seats = s.seats
+      r.smoke = s.smoke
+      r.station = s.station
+      r.station_id = s.station_id
+      r.parking = s.parking
+      r.since = s.since
+      r.menu = s.menu
+      r.note = s.note
+      r.map = s.map
+      r.close_restaurants = s.close_restaurants.join(",") if s.close_restaurants.present?
       r.save
     end
   end
