@@ -1,3 +1,71 @@
-// Place all the styles related to the top controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "colors";
+
+.page-content {
+  background: image-url("bg.jpg");
+  .main-area {
+    margin-top: 45px;
+    .main-copy {
+      text-align: center;
+      margin: 0;
+    }
+    .search {
+      text-align: center;
+      .left {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .right {
+        display: inline-block;
+        vertical-align: middle;
+        p {
+          color: #fff;
+          font-size: 20px;
+          text-align: center;
+          input {
+            height: 10px;
+            width: 210px;
+            padding: 10px;
+            font-size: 18px;
+          }
+          button {
+            background: #fff;
+            border: none;
+            width: 234px;
+            color: $tsukemen;
+            padding: 5px;
+            font-size: 18px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  .sub-area {
+    background: #fff;
+    .subs {
+      text-align: center;
+      .sub {
+        margin: 25px;
+        display: inline-block;
+        width: 280px;
+        .sub-copy {
+          font-size: 21px;
+          padding-bottom: 10px;
+          border-bottom: solid 2px $tsukemen; 
+        }
+        .sub-text {
+          font-size: 13px;
+        }
+      }
+    }
+    .areas {
+      width: 80%;
+      margin: 0 auto;
+      a {
+        margin: 10px;
+        color: $tsukemen;
+      }
+    }
+  }
+}
+

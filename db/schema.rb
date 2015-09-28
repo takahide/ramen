@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150926110838) do
+ActiveRecord::Schema.define(version: 20150928105248) do
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "prefecture_id"
+    t.string   "prefecture"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "prefectures", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "ranking_pages", force: :cascade do |t|
     t.string   "prefecture"

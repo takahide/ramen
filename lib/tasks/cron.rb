@@ -5,6 +5,15 @@ require 'kconv'
 
 class Cron
 
+  def self.get_prefectures_and_cities
+    TsukemenRestaurant.find_each do |r|
+      prefecture = r.prefecture
+      city = r.city
+      p = Prefecture.where(name: prefecture).first_or_create
+      City.where(prefecture: prefecture, prefecture_id: p.id, name: city).first_or_create
+    end
+  end
+
   def self.get_same_in_tabelog
     TsukemenRestaurant.find_each do |r|
       next if r.tabelog_url.present?

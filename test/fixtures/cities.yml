@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  prefecture_id: 1
+  prefecture: MyString
+
+two:
+  name: MyString
+  prefecture_id: 1
+  prefecture: MyString

@@ -1,0 +1,33 @@
+<div class="panel-overlay"></div>
+
+<!-- Left Panel with Reveal effect -->
+<div class="panel panel-left panel-reveal">
+  <div class="list-block">
+    <ul class="menu">
+    </ul>
+  </div>
+</div>
+
+<div class="views">
+  <div class="view view-main">
+    <div class="pages">
+      <div class="page" data-page="index">
+        <div class="page-content">
+          <div class="list-block">
+            <!-- First group-->
+            <div class="list-group">
+              <ul>
+                <% @restaurants.each dp |r| %>
+                  <li class="list-group-title"><%= r.name %></li>
+                  <li class="item-content">
+                    <%= image_tag r.map %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

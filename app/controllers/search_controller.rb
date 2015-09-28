@@ -8,4 +8,9 @@ class SearchController < ApplicationController
     end
     render json: restaurants
   end
+
+  def cities
+    prefecture_id = params[:prefecture_id]
+    @cities = City.where(prefecture_id: prefecture_id)
+  end
 end
