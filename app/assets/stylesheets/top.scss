@@ -3,8 +3,13 @@
 .page-content {
   background: image-url("bg.jpg");
   .main-area {
-    margin-top: 45px;
     .main-copy {
+      &.sp {
+        margin-top: 75px;
+      }
+      &.pc {
+        margin-top: 45px;
+      }
       text-align: center;
       margin: 0;
     }
@@ -13,10 +18,14 @@
       .left {
         display: inline-block;
         vertical-align: middle;
+        img {
+          width: 90%;
+        }
       }
       .right {
         display: inline-block;
         vertical-align: middle;
+        margin-bottom: 50px;
         p {
           color: #fff;
           font-size: 20px;
@@ -69,3 +78,18 @@
   }
 }
 
+.sp {
+  display: block;
+}
+.pc {
+  display: none;
+}
+
+@media only screen and (min-width: 800px) {
+  .sp {
+    display: none;
+  }
+  .pc {
+    display: block;
+  }
+}
