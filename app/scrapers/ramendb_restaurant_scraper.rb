@@ -14,34 +14,34 @@ class RamendbRestaurantScraper < Scraper
 
   def name
     Nokogiri::HTML(@html, nil, 'utf-8').css("#data-table tr").each do |tr|
-      return tr.css("td span").text if tr.css("th").text == "店名"
+      return tr.css("td span").text if tr.css("th").text == "店名" && tr.css("td span").present?
     end
     return nil
   end
 
   def hiragana
     furigana = Nokogiri::HTML(@html, nil, 'utf-8').css(".furigana span")
-    return furigana.text if furigana.present?
+    return furigana.text if furigana.present? 
     return nil
   end
 
   def address
     Nokogiri::HTML(@html, nil, 'utf-8').css("#data-table tr").each do |tr|
-      return tr.css("td").text if tr.css("th").text == "住所"
+      return tr.css("td").text if tr.css("th").text == "住所" && tr.css("td").present?
     end
     return nil
   end
 
   def prefecture
     Nokogiri::HTML(@html, nil, 'utf-8').css("#data-table tr").each do |tr|
-      return tr.css("td a")[0].text if tr.css("th").text == "住所"
+      return tr.css("td a")[0].text if tr.css("th").text == "住所" && tr.css("td a").present?
     end
     return nil
   end
 
   def city
     Nokogiri::HTML(@html, nil, 'utf-8').css("#data-table tr").each do |tr|
-      return tr.css("td a")[1].text if tr.css("th").text == "住所"
+      return tr.css("td a")[1].text if tr.css("th").text == "住所" && tr.css("td a").present? && tr.css("td a").size > 1
     end
     return nil
   end
@@ -83,14 +83,14 @@ class RamendbRestaurantScraper < Scraper
 
   def station
     Nokogiri::HTML(@html, nil, 'utf-8').css("#data-table tr").each do |tr|
-      return tr.css("td div").text if tr.css("th").text == "最寄り駅"
+      return tr.css("td div").text if tr.css("th").text == "最寄り駅" && tr.css("td div").present?
     end
     return nil
   end
 
   def station_id
     Nokogiri::HTML(@html, nil, 'utf-8').css("#data-table tr").each do |tr|
-      return tr.css("td div a").attr("href").content.split("id=")[1] if tr.css("th").text == "最寄り駅"
+      return tr.css("td div a").attr("href").content.split("id=")[1] if tr.css("th").text == "最寄り駅" && tr.css("td div a").present?
     end
     return nil
   end
@@ -112,7 +112,7 @@ class RamendbRestaurantScraper < Scraper
   def menu
     Nokogiri::HTML(@html, nil, 'utf-8').css("#data-table tr").each do |tr|
       if tr.css("th").text == "メニュー"
-        if tr.css("td .more")
+        if tr.css("td .more").present?
           return tr.css("td .more").text.gsub(/元に戻す/, "")
         end
         return tr.css("td").text
@@ -130,7 +130,7 @@ class RamendbRestaurantScraper < Scraper
 
   def map
     map = Nokogiri::HTML(@html, nil, 'utf-8').css("#minimap")
-    return map.css("img").attr("src").content if map.present?
+    return map.css("img").attr("src").content if map.present? && map.css("img").present?
     return nil
   end
 
