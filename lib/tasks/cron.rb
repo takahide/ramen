@@ -68,7 +68,7 @@ class Cron
   end
 
   def self.get_tsukemen_restaurant_info
-    TsukemenRestaurant.where(name: nil).find_each do |r|
+    TsukemenRestaurant.find_each do |r|
       s = RamendbRestaurantScraper.new r.url
       s.html = r.html
 
