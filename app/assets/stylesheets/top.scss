@@ -67,11 +67,16 @@
         }
       }
     }
-    .areas {
-      width: 80%;
-      margin: 0 auto;
-      a {
-        margin: 10px;
+  }
+  .areas {
+    width: 100%;
+    .prefecture {
+      p {
+        text-align: center;
+        width: 80%;
+        padding: 10px;
+        margin: 10px auto;
+        background: #fff;
         color: $tsukemen;
       }
     }

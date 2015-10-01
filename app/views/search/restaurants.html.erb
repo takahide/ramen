@@ -1,0 +1,47 @@
+<div class="panel-overlay"></div>
+
+<!-- Left Panel with Reveal effect -->
+<div class="panel panel-left panel-reveal">
+  <div class="list-block">
+    <ul class="menu">
+    </ul>
+  </div>
+</div>
+
+<div class="views">
+  <div class="view view-main">
+    <div class="pages">
+      <div class="page" data-page="index">
+        <div class="page-content">
+          <div class="list-block">
+            <!-- First group-->
+            <div class="list-group">
+              <ul class="restaurants">
+                <% @restaurants.each do |r| %>
+                  <li class="list-group-title restaurant-name">
+                    <p><%= image_tag "main_image.png", size: "48x30" %> <%= r.name %></p>
+                  </li>
+                  <li class="restaurant-info">
+                    <img data-src="<%= r.map_url(16, "320x320") %>" class="lazy" width="100%">
+                    <div class="table">
+                      <p class="th">住所</p>
+                      <p class="tr"><%= r.address %></p>
+                      <p class="th">電話番号</p>
+                      <p class="tr"><%= r.tel %></p>
+                      <p class="th">営業時間</p>
+                      <p class="tr"><%= r.opening_hours %></p>
+                      <p class="th">定休日</p>
+                      <p class="tr"><%= r.closed %></p>
+                      <p class="th">最寄駅</p>
+                      <p class="tr"><%= r.station_name %>から<%= r.station_distance %></p>
+                    </div>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

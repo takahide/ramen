@@ -61,11 +61,11 @@
                 お店に行く前にチェックしましょう！</p>
               </div>
             </div>
-            <div class="areas">
-              <% @prefectures.each do |p| %>
-                <a href="/p/<%= p.id %>"><%= p.name %></a>
-              <% end %>
-            </div>
+          </div>
+          <div class="areas">
+            <% @prefectures.each do |p| %>
+              <a class="prefecture" href="/s/<%= p.name %>"><p><%= p.name %></p></a>
+            <% end %>
           </div>
         </div>
       </div>

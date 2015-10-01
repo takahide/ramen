@@ -130,7 +130,7 @@ class RamendbRestaurantScraper < Scraper
 
   def map
     map = Nokogiri::HTML(@html, nil, 'utf-8').css("#minimap")
-    return map.css("img").attr("src").content if map.present? && map.css("img").present?
+    return map.css("img").attr("src").content.split("center=")[1].split("&")[0] if map.present? && map.css("img").present?
     return nil
   end
 

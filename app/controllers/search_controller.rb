@@ -10,7 +10,13 @@ class SearchController < ApplicationController
   end
 
   def cities
-    prefecture_id = params[:prefecture_id]
-    @cities = City.where(prefecture_id: prefecture_id)
+    prefecture = params[:prefecture]
+    @cities = City.where(prefecture: prefecture)
+  end
+
+  def restaurants
+    prefecture = params[:prefecture]
+    city = params[:city]
+    @restaurants = TsukemenRestaurant.where(prefecture: prefecture, city: city)
   end
 end

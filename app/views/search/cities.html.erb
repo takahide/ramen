@@ -10,21 +10,11 @@
 
 <div class="views">
   <div class="view view-main">
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="left open-panel">
-          <p class="link open-panel">　</p>
-        </div>
-        <a href="/"><div class="center sliding logo"><%= image_tag "logo.png", alt: "つけ麺ランキング" %></div></a>
-        <div class="right sliding">
-        </div>
-      </div>
-    </div>
     <div class="pages">
       <div class="page" data-page="index">
         <div class="page-content">
           <% @cities.each do |c| %>
-            <a><%= c.name %></a>
+            <a href="/s/<%= c.prefecture %>/<%= c.name %>"><p class="city"><%= c.name %></p></a>
           <% end %>
         </div>
       </div>
